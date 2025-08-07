@@ -1,0 +1,337 @@
+@import 'katex/dist/katex.min.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark theme base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background: #0f172a;
+    color: #f1f5f9;
+    font-feature-settings: "cv03", "cv04", "cv11";
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1e293b;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #2563eb, #7c3aed);
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #3b82f6 #1e293b;
+  }
+}
+
+/* Mathematical content styling */
+@layer components {
+  .math-content {
+    @apply text-gray-100;
+  }
+
+  .math-content .katex {
+    color: inherit;
+    font-size: 1.1em;
+  }
+
+  .math-content .katex-display {
+    margin: 1.5em 0;
+    padding: 1rem;
+    background: rgba(30, 41, 59, 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    backdrop-filter: blur(8px);
+  }
+
+  .math-content .katex-display .katex {
+    color: #93c5fd;
+    font-size: 1.2em;
+  }
+
+  .math-content p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .math-content strong {
+    @apply text-blue-300 font-semibold;
+  }
+
+  .math-content em {
+    @apply text-purple-300 italic;
+  }
+
+  .math-content code {
+    @apply bg-slate-800 text-emerald-300 px-2 py-1 rounded-md text-sm font-mono border border-slate-700;
+  }
+
+  .math-content blockquote {
+    @apply border-l-4 border-blue-500 pl-4 italic text-gray-300 bg-slate-800/30 py-2 rounded-r-lg;
+  }
+
+  .math-content ul, .math-content ol {
+    @apply ml-6 mb-4;
+  }
+
+  .math-content li {
+    @apply mb-2;
+  }
+
+  .math-content h1, .math-content h2, .math-content h3 {
+    @apply font-bold text-blue-300 mb-3;
+  }
+
+  .math-content h1 { @apply text-xl; }
+  .math-content h2 { @apply text-lg; }
+  .math-content h3 { @apply text-base; }
+}
+
+/* Animation utilities */
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounce-gentle 4s ease-in-out infinite;
+  }
+}
+
+/* Keyframe animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+  to { box-shadow: 0 0 40px rgba(147, 51, 234, 0.6); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Mathematical symbol styling */
+.math-symbol {
+  font-family: 'KaTeX_Math', 'Times New Roman', serif;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+/* Backdrop blur fallback */
+@supports not (backdrop-filter: blur()) {
+  .backdrop-blur-xl {
+    background-color: rgba(15, 23, 42, 0.85);
+  }
+  
+  .backdrop-blur-sm {
+    background-color: rgba(30, 41, 59, 0.85);
+  }
+}
+
+/* Focus styles */
+.focus-visible:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: #f1f5f9;
+}
+
+/* Mathematical equation highlighting */
+.math-highlight {
+  background: linear-gradient(120deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+  border-radius: 8px;
+  padding: 4px 8px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Loading skeleton styles */
+.skeleton {
+  background: linear-gradient(90deg, 
+    rgba(30, 41, 59, 0.4) 25%, 
+    rgba(51, 65, 85, 0.6) 37%, 
+    rgba(30, 41, 59, 0.4) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 100% 50%; }
+  100% { background-position: -100% 50%; }
+}
+
+/* Gradient text animation */
+.gradient-text-animate {
+  background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-text 4s ease infinite;
+}
+
+@keyframes gradient-text {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Mathematical particle effects */
+.math-particle {
+  pointer-events: none;
+  user-select: none;
+  font-family: 'KaTeX_Math', monospace;
+  text-shadow: 0 0 5px currentColor;
+  animation: particle-float 8s ease-in-out infinite;
+}
+
+@keyframes particle-float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.1;
+  }
+  25% { 
+    transform: translateY(-30px) rotate(90deg);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateY(-10px) rotate(180deg);
+    opacity: 0.2;
+  }
+  75% { 
+    transform: translateY(-20px) rotate(270deg);
+    opacity: 0.25;
+  }
+}
+
+/* Glass morphism effects */
+.glass {
+  background: rgba(30, 41, 59, 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-strong {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Mathematical formula container */
+.formula-container {
+  position: relative;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.4), rgba(51, 65, 85, 0.4));
+  border-radius: 16px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+.formula-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.3));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+/* Interactive elements */
+.interactive-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+}
+
+/* Mathematical notation improvements */
+.katex .accent .accent-body {
+  color: #93c5fd;
+}
+
+.katex .mord, .katex .mop {
+  color: #f1f5f9;
+}
+
+.katex .mbin, .katex .mrel {
+  color: #60a5fa;
+}
+
+.katex .mopen, .katex .mclose {
+  color: #a78bfa;
+}
+
+.katex .mpunct {
+  color: #fbbf24;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .math-content .katex-display {
+    font-size: 0.9em;
+    margin: 1rem 0;
+    padding: 0.75rem;
+  }
+  
+  .formula-container {
+    padding: 1rem;
+  }
+}
+
+/* Dark mode specific improvements */
+@media (prefers-color-scheme: dark) {
+  .katex {
+    color: #f1f5f9;
+  }
+}
